@@ -1,7 +1,8 @@
 const http = require('http');
 
 const server = http.createServer((req,res)=>{
-
+console.log(req.url,req.method);
+if(req.url === '/'){
 res.write('<html>');
 res.write('<head><title>Complete Coding</title></head>');
 res.write('<body><h1>Enter Your Details:</h1>');
@@ -18,7 +19,31 @@ res.write('</body>');
 res.write('</html>');
 return res.end();
 
-else if(req.url.to)
+}
+// else if(req.url.toLowerCase() === "/submit-details" && req.method == "POST"){
+
+//   req.on('data',chunk => {
+//     console.log(chunk);
+//   });
+//   fs.writeFileSync('user.text','Raju');
+//    res.statusCode=302;
+//    res.setHeader('Location','/');
+//    return res.end();
+// }
+
+
+req.on("end",()=>{
+  const parseBody=Buffer.concat(body).toString();
+  console.log(parseBody);
+
+  const params=new URLSearchParams(parseBody);
+  const jsonObject={};
+  for(const[key,value] of params.entries()){
+    jsonObject[key]=value;
+  }
+  console.log(jsonObject);
+});
+
 
 });
 
@@ -26,3 +51,34 @@ const PORT=3001;
 server.listen(PORT,()=>{
   console.log(`Server running on address http://localhost:${PORT}`);
 });
+
+////////////////////////////////////////////////////////////
+
+
+// const http = require('http');
+
+// const server = http.createServer((req,res)=>{
+
+// req.on("end",()=>{
+//   const parseBody=Buffer.concat(body).toString();
+//   console.log(parseBody);
+
+//   const params=new URLSearchParams(parseBody);
+//   const jsonObject={};
+//   for(const[key,value] of params.entries()){
+//     jsonObject[key]=value;
+//   }
+//   console.log(jsonObject);
+// });
+// fs.writeFileSync("User-details.txt","Raju");
+// res.setHeader("Location","/");
+// res.statusCode=302;
+// return res.end();
+
+
+// });
+
+// const PORT=3001;
+// server.listen(PORT,()=>{
+//   console.log(`Server running on address http://localhost:${PORT}`);
+// });
