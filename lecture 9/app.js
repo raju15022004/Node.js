@@ -1,9 +1,8 @@
-const { Console } = require('console');
-const { copyFileSync } = require('fs');
 const http = require('http');
-const requestHandler=require('./user')
 
-const server = http.createServer(requestHandler);
+const server = http.createServer((req,res)=>{
+  console.log(req);
+});
 
 const PORT = 3002;
 server.listen(PORT,()=>{
