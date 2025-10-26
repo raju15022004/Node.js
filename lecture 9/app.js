@@ -14,7 +14,7 @@ app.use((req,res,next)=>{
 });
 
 app.use((req,res,next)=>{
-  console.log("Come in second middleware",req.url,req.method);
+  console.log("Come in third middleware",req.url,req.method);
   res.send("<p>Welcome to complete Coding Nodejs series</p>");
 });
 
