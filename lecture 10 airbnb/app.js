@@ -25,7 +25,7 @@ app.get("/", (req,res,next)=>{
 
 app.get("/host/ add-home", (req,res,next)=>{
   res.send(`
-    <h1> Register your home here: </h1>
+    <h1> Register your home here sucessly: </h1>
     <form action="/add-home" method="POST">
     <input type="text" name="houseNmae"
     placeholder="Enter the name of your house"/>
