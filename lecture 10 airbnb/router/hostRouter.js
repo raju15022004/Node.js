@@ -3,12 +3,12 @@ const hostRouter=express.Router();
 
 
 
-// app.get("/", (req,res,next)=>{
-//   res.send(`
-//     <h1> Welcome to airbnb </h1>
-//     <a href="/add-home">Add Home</a>
-//     `);
-// })
+hostRouter.get("/", (req,res,next)=>{
+  res.send(`
+    <h1> Welcome to airbnb </h1>
+    <a href="/add-home">Add Home</a>
+    `);
+})
 
 
 hostRouter.get("/host/ add-home", (req,res,next)=>{
