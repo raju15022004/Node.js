@@ -2,18 +2,15 @@ const http = require('http');
 const express=require('express');
 
 const userRouter=require("./router/userRouter")
+const hostRouter=require("./router/hostRouter")
 
 
 const app=express();
 
-app.use((req,res,next)=>{
-  console.log(req.url,req.method);
-  next();
-})
 
 app.use(express.urlencoded());
-
 app.use(userRouter);
+app.use(hostRouter);
 
 const server=http.createServer(app);
 

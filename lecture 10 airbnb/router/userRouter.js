@@ -1,5 +1,7 @@
 const express=require('express');
 const userRouter=express.Router();
+// const hostRouter=express.hostRouter();
+
 
 
 userRouter.get("/", (req,res,next)=>{
