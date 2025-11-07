@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,49 @@
   <link rel="stylesheet" href=" home.css">
   <link rel="stylesheet" href=" output.css">
 </head>
+
 <body>
-<header>
-  <h1> Welcome to airbnb </h1>
+  <header class="bg-red-500 text-white p-4 shadow-md">
+    <nav class="container max-auto flex justify-between item-center">
+
+    </nav>
+    <h1> Welcome to airbnb </h1>
   </header>
-  <main>
-    <a href="/add-home">Add Home</a>
-    </main>
+  <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-xl">
+    <h2 class="text-4xl md:text-5xl text-gray-800 font-bold text-center mb-6">
+      Available Homes
+    </h2>
+
+    <ul class="flex flex-col gap-4">
+      <% (homes || []).forEach(function(home) { %>
+        <li class="bg-white border border-gray-100 shadow-sm rounded-lg p-4 flex items-center justify-between gap-4
+                 hover:shadow-md transform hover:-translate-y-0.5 transition duration-150 ease-in-out">
+          <div class="flex items-center gap-4">
+            <div
+              class="w-12 h-12 bg-gray-100 rounded-md flex items-center justify-center text-gray-500 text-lg font-semibold">
+              <%= (home.houseName || '' ).charAt(0).toUpperCase() %>
+            </div>
+            <div>
+              <h3 class="text-lg font-medium text-gray-800">
+                <%= home.houseName %>
+              </h3>
+              <% if (home.location) { %>
+                <p class="text-sm text-gray-500 mt-1">
+                  <%= home.location %>
+                </p>
+                <% } %>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="text-sm px-2 py-1 bg-green-50 text-green-700 rounded-full font-semibold">Available</span>
+            <a href="/host/home/<%= home.id %>" class="text-sm text-indigo-600 hover:underline">View</a>
+          </div>
+        </li>
+        <% }); %>
+    </ul>
+  </main>
 
 </body>
+
 </html>
-
-
-
